@@ -17,6 +17,7 @@ namespace TextRPG_8Team.TextRPG_8team.TextRPG_8team
 
     public class Player
     {
+        //Player player = new Player();
         public string Name;
         public JobType Job = JobType.Warrior;
         public int Level = 1;
@@ -29,15 +30,15 @@ namespace TextRPG_8Team.TextRPG_8team.TextRPG_8team
         public int Gold = 1500;
 
         //아이템 장착으로 변한 능력치
-        public int BonusAttack => EquippedItems.Sum(item => item.AttackBonus);
-        public int BonusDefense => EquippedItems.Sum(item => item.DefenseBonus);
+        //public int BonusAttack => EquippedItems.Sum(item => item.AttackBonus);
+        //public int BonusDefense => EquippedItems.Sum(item => item.DefenseBonus);
 
         //최종 능력치
-        public int TotalAttack => BaseAttack + BonusAttack;
-        public int TotalDefense => BaseDefense + BonusDefense;
+        //public int TotalAttack => BaseAttack + BonusAttack;
+        //public int TotalDefense => BaseDefense + BonusDefense;
 
-        public List<Item> Inventory = new List<Item>();
-        public List<Item> EquippedItems = new List<Item>();
+        //public List<Item> Inventory = new List<Item>();
+        //public List<Item> EquippedItems = new List<Item>();
 
         //직업에 따라 능력치 조절해주기 전사가 기본 스텟이니까 도적과 마법사만 조절
         //밸런스 공격력 1당 최대체력 -5, 방여력 -0.5(내림)
@@ -63,43 +64,35 @@ namespace TextRPG_8Team.TextRPG_8team.TextRPG_8team
         public void PlayerStat()
         {
             Console.WriteLine("\n===== 캐릭터 정보 =====");
-            Console.WriteLine($"이름: {player.Name}");
-            Console.WriteLine($"직업: {player.Job}");
-            Console.WriteLine($"레벨: {player.Level}");
-            Console.WriteLine($"공격력: {player.BaseAttack} (+{player.BonusAttack}) => {player.TotalAttack}");
-            Console.WriteLine($"방어력: {player.BaseDefense} (+{player.BonusDefense}) => {player.TotalDefense}");
-            Console.WriteLine($"체력: {player.CurrentHP} / {player.MaxHP}");
-            Console.WriteLine($"Gold: {player.Gold}");
+            Console.WriteLine($"이름: {Name}");
+            Console.WriteLine($"직업: {Job}");
+            Console.WriteLine($"레벨: {Level}");
+            //Console.WriteLine($"공격력: {player.BaseAttack} (+{player.BonusAttack}) => {player.TotalAttack}");
+            //.WriteLine($"방어력: {player.BaseDefense} (+{player.BonusDefense}) => {player.TotalDefense}");
+            Console.WriteLine($"체력: {CurrentHP} / {MaxHP}");
+            Console.WriteLine($"Gold: {Gold}");
 
-            Console.WriteLine("\n[장착 중인 아이템]");
-            if (player.EquippedItems.Count == 0)
-            {
-                Console.WriteLine("없음");
-            }
-            else
-            {
-                foreach (var item in player.EquippedItems)
-                {
-                    Console.WriteLine($"- {item}");
-                }
-            }
+            //Console.WriteLine("\n[장착 중인 아이템]");
+            //if (player.EquippedItems.Count == 0)
+            //{
+            //    Console.WriteLine("없음");
+            //}
+            //else
+            //{
+            //    foreach (var item in player.EquippedItems)
+            //    {
+            //        Console.WriteLine($"- {item}");
+            //    }
+            //}
 
             Console.WriteLine("========================\n");
             Console.Write("메인 메뉴로 돌아가려면 0을 입력 : ");
 
-            if (int.TryParse(Console.ReadLine(), out int index))
+            //숫자가 아니거나 0이 아니면 실행
+            while (!(int.TryParse(Console.ReadLine(), out int index)) || !(index == 0))
             {
-                if (index == 0)
-                    return;
-                else
-                {
-                    Console.WriteLine("잘못된 입력입니다.");
-                    return;
-                }
-            }
-            else
-            {
-                Console.WriteLine("숫자를 입력해주세요.");
+                Console.WriteLine("잘못된 입력입니다.");
+                continue;
             }
         }
     }

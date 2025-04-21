@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_8Team.TextRPG_8team.TextRPG_8team;
 
 namespace TextRPG_8team
 {
     internal class StartPage
     {
         //시작 화면
-        public void StartGame()
+        public void StartGame(Player _player) 
         {
-            Console.Clear();
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.\n");
-
-            Console.WriteLine("1. 상태 보기\n2. 전투 시작\n");
-
-            Console.WriteLine("원하시는 행동을 입력해주세요.");
-            Console.Write(">>");
-
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.\n");
                 Console.WriteLine("1. 상태 보기\n2. 전투 시작\n");
 
                 Console.WriteLine("원하시는 행동을 입력해주세요.");
@@ -33,12 +27,14 @@ namespace TextRPG_8team
                 if (!isChoiceNum)
                 {
                     Console.WriteLine("잘못된 입력입니다");
+                    Thread.Sleep(500);
                     continue;
                 }
                 //1~2의 값이 아니라면 실행
                 if(choiceNum>2 || choiceNum<1)
                 {
                     Console.WriteLine("잘못된 입력입니다");
+                    Thread.Sleep(500);
                     continue;
                 }
 
@@ -46,9 +42,9 @@ namespace TextRPG_8team
 
                 switch(enumChoice)
                 {
-                    case StartChoice.Status:
+                    case StartChoice.Status:_player.PlayerStat(); 
                         break;
-                    case StartChoice.Battle:
+                    case StartChoice.Battle:                
                         break;
                     default:
                         break;
