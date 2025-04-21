@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_8Team;
@@ -57,6 +58,33 @@ namespace TextRPG_8Team.TextRPG_8team.TextRPG_8team
             }
 
             CurrentHP = MaxHP;
+        }
+
+        public void PlayerStat()
+        {
+            Console.WriteLine("\n===== 캐릭터 정보 =====");
+            Console.WriteLine($"이름: {player.Name}");
+            Console.WriteLine($"직업: {player.Job}");
+            Console.WriteLine($"레벨: {player.Level}");
+            Console.WriteLine($"공격력: {player.BaseAttack} (+{player.BonusAttack}) => {player.TotalAttack}");
+            Console.WriteLine($"방어력: {player.BaseDefense} (+{player.BonusDefense}) => {player.TotalDefense}");
+            Console.WriteLine($"체력: {player.CurrentHP} / {player.MaxHP}");
+            Console.WriteLine($"Gold: {player.Gold}");
+
+            Console.WriteLine("\n[장착 중인 아이템]");
+            if (player.EquippedItems.Count == 0)
+            {
+                Console.WriteLine("없음");
+            }
+            else
+            {
+                foreach (var item in player.EquippedItems)
+                {
+                    Console.WriteLine($"- {item}");
+                }
+            }
+
+            Console.WriteLine("========================\n");
         }
     }
 }
