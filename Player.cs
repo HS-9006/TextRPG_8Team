@@ -14,6 +14,7 @@ namespace TextRPG_8Team
         Mage        // 마법사
     }
 
+
     public class Player
     {
         public string Name;
