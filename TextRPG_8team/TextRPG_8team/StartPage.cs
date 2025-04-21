@@ -11,6 +11,7 @@ namespace TextRPG_8team
         //시작 화면
         public void StartGame()
         {
+            Console.Clear();
             Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.\n");
 
             Console.WriteLine("1. 상태 보기\n2. 전투 시작\n");
@@ -20,6 +21,12 @@ namespace TextRPG_8team
 
             while (true)
             {
+                Console.Clear();
+                Console.WriteLine("1. 상태 보기\n2. 전투 시작\n");
+
+                Console.WriteLine("원하시는 행동을 입력해주세요.");
+                Console.Write(">>");
+
                 bool isChoiceNum = int.TryParse(Console.ReadLine(), out int choiceNum);
 
                 //선택한 것이 숫자가 아니라면 실행
