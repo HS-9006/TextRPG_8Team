@@ -14,23 +14,32 @@ namespace TextRPG_8Team
         public int amount { get; set; }
         public bool isAlive => health > 0;
 
-
-        public override string ToString()
+        public virtual void Attack(Monster target)
         {
-            ConsoleColor originalColor = Console.ForegroundColor;
-
             if (!isAlive)
             {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine($"{name} (사망)");
-            }
-            else
-            {
-                Console.WriteLine($"[{name}] Lv.{level} HP: {health} ATK: {attack} DEF: {def}");
+                Console.WriteLine($"{name}은(는) 사망 상태라 공격할 수 없습니다.");
+                return;
             }
 
-            Console.ForegroundColor = originalColor;
-            return "";
+            if (!target.isAlive)
+            {
+                Console.WriteLine($"{target.name}은(는) 이미 사망했습니다. 공격 무효!");
+                return;
+            }
+
+            int damage = attack - target.def;
+            damage = Math.Max(0, damage);
+            target.health -= damage;
+
+            Console.WriteLine($"{name}이(가) {target.name}에게 {damage}의 피해를 입혔습니다!");
+
+            if(target.health < 0)
+            {
+                target.health = 0;
+                target.isAlive = false;
+                Console.WriteLine($"{target.name}은(는) 쓰러졌습니다.");
+            }
         }
 
     }
@@ -65,4 +74,20 @@ namespace TextRPG_8Team
             gold = 10;
         }
     }
+
+    public class Gongjungwi : Monster
+{
+    public Gongjungwi()
+    {
+        name = "공정위";
+        level = 5;
+        health = 50;
+        attack = 30;
+        def = 14;
+        speed = 25;
+        exp = 40;
+        gold = 100;
+
+    }
+}
 }
