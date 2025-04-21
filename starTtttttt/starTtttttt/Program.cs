@@ -1,11 +1,10 @@
-﻿
-namespace TextRPG_8team
+﻿namespace starTtttttt
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            Console.WriteLine("Hello, World!");
         }
     }
 }
