@@ -11,8 +11,30 @@ namespace TextRPG_8Team
         public int speed { get; set; }
         public int exp { get; set; }
         public int gold { get; set; }
+        public int amount { get; set; }
         public bool isAlive => health > 0;
+
+
+        public override string ToString()
+        {
+            ConsoleColor originalColor = Console.ForegroundColor;
+
+            if (!isAlive)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine($"{name} (사망)");
+            }
+            else
+            {
+                Console.WriteLine($"[{name}] Lv.{level} HP: {health} ATK: {attack} DEF: {def}");
+            }
+
+            Console.ForegroundColor = originalColor;
+            return "";
+        }
+
     }
+}
 
     public class Ssalsoong : Monster
     {
