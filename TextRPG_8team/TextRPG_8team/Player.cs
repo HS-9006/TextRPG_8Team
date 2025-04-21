@@ -85,6 +85,22 @@ namespace TextRPG_8Team.TextRPG_8team.TextRPG_8team
             }
 
             Console.WriteLine("========================\n");
+            Console.Write("메인 메뉴로 돌아가려면 0을 입력 : ");
+
+            if (int.TryParse(Console.ReadLine(), out int index))
+            {
+                if (index == 0)
+                    return;
+                else
+                {
+                    Console.WriteLine("잘못된 입력입니다.");
+                    return;
+                }
+            }
+            else
+            {
+                Console.WriteLine("숫자를 입력해주세요.");
+            }
         }
     }
 }
