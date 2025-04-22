@@ -12,8 +12,12 @@ namespace TextRPG_8team
         //시작 화면
         public void StartGame(Player _player) 
         {
+            bool isGameEnd = false;
+
             while (true)
             {
+                if (isGameEnd) break;
+
                 Console.Clear();
                 Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.\n");
                 Console.WriteLine("1. 상태 보기\n2. 전투 시작\n3. 인벤토리\n4. 게임 종료\n");
@@ -48,12 +52,14 @@ namespace TextRPG_8team
                         break;
                     case StartChoice.Inventory:
                         break;
-                    case StartChoice.GameEnd:
+                    case StartChoice.GameEnd: isGameEnd = true;
                         break;
                     default:
                         break;
                 }
             }
+
+            Console.WriteLine("게임이 종료되었습니다");
         }
 
         enum StartChoice
