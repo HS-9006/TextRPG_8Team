@@ -44,7 +44,7 @@ namespace TextRPG_8team
                 {
                     case StartChoice.Status:_player.PlayerStat(); 
                         break;
-                    case StartChoice.Battle:                
+                    case StartChoice.Battle:
                         break;
                     default:
                         break;
