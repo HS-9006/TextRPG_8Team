@@ -136,6 +136,5 @@ namespace TextRPG_8Team.TextRPG_8Team.TextRPG_8team.TextRPG_8team
                 Console.WriteLine("숫자를 입력해주세요.");
             }
         }
-
     }
 }
